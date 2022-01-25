@@ -1,0 +1,23 @@
+.profile {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 880px;
+  margin: 0 auto;
+  padding-top: 40px;
+}
+
+@media screen and (max-width: 800px) {
+  .profile {
+    flex-direction: column;
+    max-width: 581px;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .profile {
+    flex-direction: column;
+    max-width: 320px;
+    padding-top: 38px;
+  }
+}
