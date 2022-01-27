@@ -25,7 +25,7 @@
 
 Ознакомиться с ней можно по ссылке:
 
-* [Ссылка на работу в GitHub 1](https://marianikolaeva2028.github.io/russian-travel/)
+* [Ссылка на работу в GitHub](https://marianikolaeva2028.github.io/mesto/)
 
 **Возможности по доработке**
 
