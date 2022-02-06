@@ -25,55 +25,11 @@
         <p class="profile__profession">Исследователь океана</p>
       </div>
       </div>
-
       <button class="profile__add-button"></button>
-
     </section>
 
     <section class="element">
       <ul class="element__gallery">
-        <li class="element__group">
-          <img class="element__image" src="./images/grid-karachaevsk.jpg" alt="Храм на фоне зеленого леса">
-          <div class="element__info">
-            <h2 class="element__title">Карачаевск</h2>
-            <button class="element__like-button"></button>
-          </div>
-        </li>
-        <li class="element__group">
-          <img class="element__image" src="./images/grid-elbrus.jpg" alt="Гора на фоне заката">
-          <div class="element__info">
-            <h2 class="element__title">Гора Эльбрус</h2>
-            <button class="element__like-button"></button>
-          </div>
-        </li>
-        <li class="element__group">
-          <img class="element__image" src="./images/grid-dombai.jpg" alt="Лес и горы">
-          <div class="element__info">
-            <h2 class="element__title">Домбай</h2>
-            <button class="element__like-button"></button>
-          </div>
-        </li>
-        <li class="element__group">
-          <img class="element__image" src="./images/grid-ocean.jfif" alt="Океан">
-          <div class="element__info">
-            <h2 class="element__title">Атлантический океан</h2>
-            <button class="element__like-button"></button>
-          </div>
-        </li>
-        <li class="element__group">
-          <img class="element__image" src="./images/grid-tishina.jfif" alt="Риф и красные рыбки">
-          <div class="element__info">
-            <h2 class="element__title">Коралловый риф</h2>
-            <button class="element__like-button"></button>
-          </div>
-        </li>
-        <li class="element__group">
-          <img class="element__image" src="./images/grid-rif.jfif" alt="Риф и рыбки">
-          <div class="element__info">
-            <h2 class="element__title">Рас-Мохаммед</h2>
-            <button class="element__like-button"></button>
-          </div>
-        </li>
       </ul>
     </section>
   </main>
@@ -82,9 +38,10 @@
       <p class="footer__copyright">&copy; 2022 Mesto Russia</p>
     </footer>
 
-    <section class="popup">
+    <!--Edit:пользователь меняет имя и профессию-->
+    <section class="popup popup_edit">
       <div class="popup__container">
-        <button class="popup__close"></button>
+        <button class="popup__close" type="button"></button>
         <h3 class="popup__title">Редактировать профиль</h3>
         <form class="popup__form">
           <input class="popup__input" id="name" type="text" placeholder="Имя">
@@ -93,6 +50,43 @@
         </form>
         </div>
     </section>
+
+    <!--Add:пользователь добавляет карточки с фото и подпись-->
+    <section class="popup popup_add">
+      <div class="popup__container">
+        <button class="popup__close" type="button"></button>
+        <h3 class="popup__title">Новое место</h3>
+        <form class="popup__form">
+          <input class="popup__input" id="place-name" type="text" placeholder="Название">
+          <input class="popup__input" id="place-url" type="url" placeholder="Ссылка на картинку">
+          <button class="popup__submit" type="submit">Создать</button>
+        </form>
+        </div>
+    </section>
+
+    <!--Template:массив с карточками-->
+    <template class="template">
+      <li class="element__group">
+        <img class="element__image" src="" alt="Место">
+        <button class="element__delete-button" type="button"></button>
+        <div class="element__info">
+          <h2 class="element__title"></h2>
+          <button class="element__like-button" type="button"></button>
+        </div>
+      </li>
+    </template>
+
+    <!--View: пользователь вызывает popup с увеличенной картинкой-->
+    <section class="popup popup_view">
+      <div class="popup__container popup__container_view">
+        <button class="popup__close" type="button"></button>
+        <figure class="popup__figure">
+          <img class="popup__photo" src="" alt="Место" >
+          <figcaption class="popup__figcaption"></figcaption>
+        </figure>
+      </div>
+    </section>
+
     <script src="./scripts/index.js"></script>
   </body>
 </html>

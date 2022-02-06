@@ -1,5 +1,5 @@
 .popup__close{
-  position:absolute;
+  position: absolute;
   top: -40px;
   right: -40px;
   background-image: url(../../../images/cross-close-icon.svg);
@@ -10,7 +10,7 @@
   background-repeat: no-repeat;
   background-position: center;
   border: none;
-  background-color: #000000;
+  background-color: transparent;
   transition: opacity 0.3s ease-in-out;
 }
 
