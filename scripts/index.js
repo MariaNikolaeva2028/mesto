@@ -1,8 +1,7 @@
 // Находим форму в DOM закрытие и открытие popup: Общее для edit и add
-const popup = document.querySelector('.popup');
-const popupCloseButton = document.querySelectorAll('.popup__close');
-const formElement = document.querySelector('.popup__container');
+const popupCloseButtons = document.querySelectorAll('.popup__close');
 // Находим форму в DOM блок edit
+const profileForm = document.querySelector('.popup__container'); //Найдет 1-ый контейнер, блок edit
 const editPopup = document.querySelector('.popup_edit');
 const nameProfile = document.querySelector('.profile__name');
 const jobProfile = document.querySelector('.profile__profession');
@@ -18,7 +17,7 @@ const profileAddButton = document.querySelector('.profile__add-button');
 // Находим форму в DOM блок view
 const viewPopup = document.querySelector('.popup_view');
 const viewPhoto = document.querySelector('.popup__photo');
-const viewFigcaption = document.querySelector('.popup__figcaption');
+const viewFigCaption = document.querySelector('.popup__figcaption');
 
 
 //Массив с карточками
@@ -69,7 +68,7 @@ function openEditPopup() {
 profileEditButton.addEventListener('click', openEditPopup);
 
 //Закрытие для edit, add и view
-popupCloseButton.forEach( btn => {
+popupCloseButtons.forEach( btn => {
   btn.addEventListener('click', function () {
     closePopup(btn.closest('.popup'))
   })
@@ -77,14 +76,14 @@ popupCloseButton.forEach( btn => {
 
 //Редактирование имени и информации о себе посредством submit
 // Обработчик «отправки» формы
-function formSubmitHandler (evt) {
+function handleProfileFormSubmit (evt) {
   evt.preventDefault(); // Эта строчка отменяет стандартную отправку формы.
   nameProfile.textContent = nameInput.value; //Данные из инпутов отправляются в карточку пользователя
   jobProfile.textContent = jobInput.value;
    closePopup(editPopup);
 }
 // Прикрепляем обработчик к форме: он будет следить за событием “submit” - «отправка»
-formElement.addEventListener('submit', formSubmitHandler);
+profileForm.addEventListener('submit', handleProfileFormSubmit);
 
 //Открытие add
 function openAddPopup() {
@@ -101,10 +100,10 @@ function deleteCard(event) {
   event.target.closest('.element__group').remove();
 }
 
-function viewPopupImage(image){
-  viewPhoto.src = image.target.src;
-  viewPhoto.alt = image.target.alt;
-  viewFigcaption.textContent = image.target.alt;
+function handleCardClick(card){
+  viewPhoto.src = card.link;
+  viewPhoto.alt = card.name;
+  viewFigCaption.textContent = card.name;
   openPopup(viewPopup);
 }
 
@@ -121,25 +120,26 @@ function creatCard(card) {
   cardPhoto.src = card.link;
   cardElement.querySelector('.element__like-button').addEventListener('click', likeCard);
   cardElement.querySelector('.element__delete-button').addEventListener('click', deleteCard);
-  cardPhoto.addEventListener('click', viewPopupImage);
+  cardPhoto.addEventListener('click', () => handleCardClick(card));
   return cardElement; //Вернули готовую карточку
 }
 
 //Добавление карточки в начало массива
- function formSubmitCard (evt) {
+ function handleCardFormSubmit(evt) {
   evt.preventDefault();
   if (namePlace.value && urlPlace.value) { //Проверка переданы ли пользователем данные, если нет, то карточка не добавляется и addpopup закрывается
   gallery.prepend(creatCard({name: namePlace.value, link: urlPlace.value})); //Вставка карточки перед массивом
   }
   closePopup(addPopup);
+  formPlace.reset(); //Очистка формы
 }
 // Прикрепляем обработчик к форме: он будет следить за событием “submit” - для add
-formPlace.addEventListener('submit', formSubmitCard);
+formPlace.addEventListener('submit', handleCardFormSubmit);
 
 //Вставка элементов в разметку
-function addCard() {
+function renderInitialCards() {
   initialCards.forEach((card) => {
   gallery.append(creatCard(card))
   });
 }
-addCard();
+renderInitialCards();
